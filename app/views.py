@@ -55,6 +55,78 @@ def course(request):
     return render(request, 'course.html', context)
 
 
+def web_design(request):
+    courses = Course.objects.all()
+
+    context = {
+        'courses': courses,
+    }
+    return render(request, 'courses/web-design.html', context)
+
+
+def development(request):
+    courses = Course.objects.all()
+
+    context = {
+        'courses': courses,
+    }
+    return render(request, 'courses/development.html', context)
+
+
+def game_design(request):
+    courses = Course.objects.all()
+
+    context = {
+        'courses': courses,
+    }
+    return render(request, 'courses/game-design.html', context)
+
+
+def apps_design(request):
+    courses = Course.objects.all()
+
+    context = {
+        'courses': courses,
+    }
+    return render(request, 'courses/app-design.html', context)
+
+
+def marketing(request):
+    courses = Course.objects.all()
+
+    context = {
+        'courses': courses,
+    }
+    return render(request, 'courses/marketing.html', context)
+
+
+def research(request):
+    courses = Course.objects.all()
+
+    context = {
+        'courses': courses,
+    }
+    return render(request, 'courses/research.html', context)
+
+
+def content(request):
+    courses = Course.objects.all()
+
+    context = {
+        'courses': courses,
+    }
+    return render(request, 'courses/content.html', context)
+
+
+def seo(request):
+    courses = Course.objects.all()
+
+    context = {
+        'courses': courses,
+    }
+    return render(request, 'courses/seo.html', context)
+
+
 """TEACHER VIEWS"""
 
 

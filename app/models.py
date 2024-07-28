@@ -1,8 +1,10 @@
 from django.db import models
 from django.utils.text import slugify
 
-
 # Create your models here.
+
+"""ABOUT MODEL"""
+
 
 class AboutUs(models.Model):
     name = models.CharField(max_length=100)
@@ -10,6 +12,9 @@ class AboutUs(models.Model):
 
     def __str__(self):
         return self.name
+
+
+"""COURSES MODEL"""
 
 
 class Category(models.Model):
@@ -30,6 +35,12 @@ class Course(models.Model):
     name = models.CharField(max_length=100)
     body = models.TextField()
     image = models.ImageField(upload_to='images/')
+    url_name = models.CharField(max_length=50, null=True, blank=True, choices=[
+        ('web_design', 'Web Design'),
+        ('development', 'Development'),
+        ('seo', 'SEO'),
+        ('game_design', 'Game Design'),
+    ])
     slug = models.SlugField(unique=True, blank=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='courses')
 
@@ -74,6 +85,9 @@ class PopularCourse(models.Model):
         return self.title
 
 
+"""TEACHER MODEL"""
+
+
 class Teacher(models.Model):
     full_name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, blank=True)
@@ -99,6 +113,9 @@ class Teacher(models.Model):
 
     def __str__(self):
         return self.full_name
+
+
+"""CONTACT MODEL"""
 
 
 class Contact(models.Model):
