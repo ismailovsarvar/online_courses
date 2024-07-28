@@ -72,3 +72,41 @@ class PopularCourse(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Teacher(models.Model):
+    full_name = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True, blank=True)
+    email = models.EmailField()
+    phone = models.CharField()
+    twitter = models.URLField(blank=True)
+    facebook = models.URLField(blank=True)
+    linkedin = models.URLField(blank=True)
+    description = models.TextField()
+    image = models.ImageField(upload_to='teachers/')
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='teachers', null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            t_slug = slugify(self.full_name)
+            slug = t_slug
+            counter = 1
+            while Teacher.objects.filter(slug=slug).exists():
+                slug = t_slug + str(counter)
+                counter += 1
+            self.slug = slug
+        super(Teacher, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.full_name
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    subject = models.CharField(max_length=255)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
