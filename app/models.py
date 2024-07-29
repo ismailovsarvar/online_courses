@@ -85,6 +85,19 @@ class PopularCourse(models.Model):
         return self.title
 
 
+class CourseSignUp(models.Model):
+    full_name = models.CharField(max_length=100)
+    email = models.EmailField()
+    select_a_course = models.ForeignKey('Course', related_name='select_a_course', on_delete=models.CASCADE, null=True,
+                                        blank=True)
+
+    def __str__(self):
+        return f"{self.full_name} {self.select_a_course}"
+
+    def is_valid(self):
+        pass
+
+
 """TEACHER MODEL"""
 
 

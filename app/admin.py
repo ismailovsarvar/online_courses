@@ -1,6 +1,14 @@
 from django.contrib import admin
 
-from .models import AboutUs, Category, Course, PopularCourse, Teacher, Contact
+from .models import (
+    AboutUs,
+    Category,
+    Course,
+    PopularCourse,
+    Teacher,
+    Contact,
+    CourseSignUp,
+)
 
 
 # Register your models here.
@@ -36,3 +44,8 @@ class TeacherAdmin(admin.ModelAdmin):
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'created_at')
+
+
+@admin.register(CourseSignUp)
+class CourseSignUpAdmin(admin.ModelAdmin):
+    list_display = ('full_name', 'email',)

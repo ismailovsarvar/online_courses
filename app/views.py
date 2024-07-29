@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
+from django.core.mail import send_mail
+from django.conf import settings
 
-from app.forms import ContactForm
+from app.forms import ContactForm, CourseSignUp
 from app.models import Category, Course, PopularCourse, AboutUs, Teacher
 
 # Create your views here.
@@ -53,6 +55,19 @@ def course(request):
     }
 
     return render(request, 'course.html', context)
+
+
+def course_sign_up(request):
+    if request.method == 'POST':
+        form = CourseSignUp(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = CourseSignUp()
+
+    return render(request, 'index.html', {'form': form})
+
 
 
 def web_design(request):

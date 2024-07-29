@@ -147,27 +147,19 @@
 <div class="container-fluid py-5">
     <div class="container pt-5 pb-3">
         <div class="text-center mb-5">
-{#            <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Subjects</h5>#}
-            <h1>Top Programs</h1>
-        </div>
-        <div class="row">
-            <div class="row">
-                {% if courses %}
-                    {% for course in courses %}
-                        <div class="col-lg-3 col-md-6 mb-4">
-                            <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                                <img class="img-fluid" src="{{ course.image.url }}" alt="">
-                                <a class="cat-overlay text-white text-decoration-none" href="">
-                                    <h4 class="text-white font-weight-medium">{{ course.name }}</h4>
-                                    <span>{{ course.body }}</span>
-                                </a>
-                            </div>
-                        </div>
-                    {% endfor %}
-                {% else %}
-                    <p>No courses available.</p>
-                {% endif %}
+            {#            <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Subjects</h5>#}
+            <h1>Watch our Intro Video</h1>
+            <!--YouTube Video start-->
+            <div class="container">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe width="681" height="383" src="https://www.youtube.com/embed/R_6AKZ1Joro"
+                            title="🔥 Content Marketing Full Course 2023 | Content Marketing for Beginners in 5 Hours | Simplilearn"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
             </div>
+            <!--YouTube Video End-->
         </div>
     </div>
 </div>
@@ -180,9 +172,9 @@
             <div class="row">
                 <div class="col-md-6 mb-5">
                     <h5 class="text-primary text-uppercase mb-4" style="letter-spacing: 5px;">Get In Touch</h5>
-                    <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
-                    <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
-                    <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+                    <p><i class="fa fa-map-marker-alt mr-2"></i>100178, Almazar Street, Tashkent, Uzbekistan</p>
+                    <p><i class="fa fa-phone-alt mr-2"></i>+998 (78) 888-98-88</p>
+                    <p><i class="fa fa-envelope mr-2"></i>najottalim@example.com</p>
                     <div class="d-flex justify-content-start mt-4">
                         <a class="btn btn-outline-light btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-outline-light btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>

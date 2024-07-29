@@ -300,21 +300,30 @@
                         <h1 class="m-0">Sign Up Now</h1>
                     </div>
                     <div class="card-body rounded-bottom bg-primary p-5">
-                        <form>
+                        <form method="post">
+                            {% csrf_token %}
                             <div class="form-group">
-                                <input type="text" class="form-control border-0 p-4" placeholder="Your name"
+                                <label for="{{ form.full_name. }}"></label>
+                                <input type="text" name="{{ form.full_name }}" id="{{ form.full_name }}" class="form-control border-0 p-4" placeholder="Your name"
                                        required="required"/>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control border-0 p-4" placeholder="Your email"
+                                <label for="{{ form.email }}"></label>
+                                <input type="email" name="{{ form.email }}" id="{{ form.email }}" class="form-control border-0 p-4" placeholder="Your email"
                                        required="required"/>
                             </div>
                             <div class="form-group">
-                                <select class="custom-select border-0 px-4" style="height: 47px;">
+                                <label for="{{ form.select_a_course }}"></label>
+                                <select name="{{ form.select_a_course.id }}" id="{{ form.select_a_course.id }}" class="custom-select border-0 px-4" style="height: 47px;">
                                     <option selected>Select a course</option>
-                                    <option value="1">Course 1</option>
-                                    <option value="2">Course 1</option>
-                                    <option value="3">Course 1</option>
+                                    <option value="1">Web Design</option>
+                                    <option value="2">Development</option>
+                                    <option value="3">Game Design</option>
+                                    <option value="4">Apps Design</option>
+                                    <option value="5">Marketing</option>
+                                    <option value="6">Research</option>
+                                    <option value="7">Content Writing</option>
+                                    <option value="8">SEO</option>
                                 </select>
                             </div>
                             <div>
