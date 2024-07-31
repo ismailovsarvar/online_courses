@@ -33,13 +33,3 @@ class AboutView(View):
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name)
-
-
-"""LOGIN VIEWS"""
-
-
-class LoginView(View):
-    template_name = 'auth/auth.html'
-
-    def get(self, request):
-        return render(request, self.template_name)

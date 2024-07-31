@@ -118,7 +118,17 @@
                         </div>
                         <a href="{% url 'contact' %}" class="nav-item nav-link active">Contact</a>
                     </div>
-                    <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="{% url 'login' %}">Login</a>
+                    {% if user.is_authenticated %}
+                        <!-- Agar foydalanuvchi tizimga kirgan bo'lsa, foydalanuvchi nomini ko'rsatadi -->
+                        <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="">
+                            {{ user.username }}
+                        </a>
+                    {% else %}
+                        <!-- Agar foydalanuvchi tizimga kirmagan bo'lsa, tizimga kirish ko'rsatiladi -->
+                        <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="{% url 'login' %}">
+                            Login
+                        </a>
+                    {% endif %}
                 </div>
             </nav>
         </div>

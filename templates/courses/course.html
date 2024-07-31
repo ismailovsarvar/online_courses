@@ -118,7 +118,17 @@
                         </div>
                         <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
                     </div>
-                    <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="{% url 'login' %}">Login</a>
+                    {% if user.is_authenticated %}
+                        <!-- Agar foydalanuvchi tizimga kirgan bo'lsa, foydalanuvchi nomini ko'rsatadi -->
+                        <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="">
+                            {{ user.username }}
+                        </a>
+                    {% else %}
+                        <!-- Agar foydalanuvchi tizimga kirmagan bo'lsa, tizimga kirish ko'rsatiladi -->
+                        <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="{% url 'login' %}">
+                            Login
+                        </a>
+                    {% endif %}
                 </div>
             </nav>
         </div>
@@ -189,10 +199,14 @@
                             <img class="img-fluid" src="{{ popular.image.url }}" alt="">
                             <div class="bg-secondary p-4">
                                 <div class="d-flex justify-content-between mb-3">
-                                    <small class="m-0"><i class="fa fa-users text-primary mr-2"></i>{{ popular.number_of_students }} Students</small>
-                                    <small class="m-0"><i class="far fa-clock text-primary mr-2"></i>{{ popular.time_of_teaching }}</small>
+                                    <small class="m-0"><i
+                                            class="fa fa-users text-primary mr-2"></i>{{ popular.number_of_students }}
+                                        Students</small>
+                                    <small class="m-0"><i
+                                            class="far fa-clock text-primary mr-2"></i>{{ popular.time_of_teaching }}
+                                    </small>
                                 </div>
-                                <a class="h5" href="">{{ popular.title }}</a>
+                                <a class="h5" href="{% url 'web_design' %}">{{ popular.title }}</a>
                                 <div class="border-top mt-4 pt-4">
                                     <div class="d-flex justify-content-between">
                                         <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>{{ popular.rating }}<small>(250)</small>
@@ -219,8 +233,8 @@
                 <div class="col-md-6 mb-5">
                     <h5 class="text-primary text-uppercase mb-4" style="letter-spacing: 5px;">Get In Touch</h5>
                     <p><i class="fa fa-map-marker-alt mr-2"></i>100178, Almazar Street, Tashkent, Uzbekistan</p>
-                        <p><i class="fa fa-phone-alt mr-2"></i>+998 (78) 888-98-88</p>
-                        <p><i class="fa fa-envelope mr-2"></i>najottalim@example.com</p>
+                    <p><i class="fa fa-phone-alt mr-2"></i>+998 (78) 888-98-88</p>
+                    <p><i class="fa fa-envelope mr-2"></i>najottalim@example.com</p>
                     <div class="d-flex justify-content-start mt-4">
                         <a class="btn btn-outline-light btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-outline-light btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>

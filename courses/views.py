@@ -1,103 +1,127 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views import View
+from django.views.generic.edit import FormView
 
-from courses.models import Category, PopularCourse, CourseSignUp
+from contacts.forms import CourseSignUpForm
+from courses.models import Category, PopularCourse
 
 # Create your views here.
 
 """COURSE VIEWS"""
 
 
-def course(request):
-    categories = Category.objects.all()
-    popular_courses = PopularCourse.objects.all()
+class CourseView(View):
+    template_name = 'courses/course.html'
 
-    context = {
-        'categories': categories,
-        'popular_courses': popular_courses
-    }
+    def get(self, request, *args, **kwargs):
+        categories = Category.objects.all()
+        popular_courses = PopularCourse.objects.all()
 
-    return render(request, 'courses/course.html', context)
+        context = {
+            'categories': categories,
+            'popular_courses': popular_courses
+        }
 
-
-def course_sign_up(request):
-    if request.method == 'POST':
-        form = CourseSignUp(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-    else:
-        form = CourseSignUp()
-
-    return render(request, 'app/index.html', {'form': form})
+        return render(request, 'courses/course.html', context)
 
 
-def web_design(request):
-    courses = PopularCourse.objects.all()
-
-    context = {
-        'courses': courses,
-    }
-    return render(request, 'courses/web-design.html', context)
-
-
-def development(request):
-    courses = PopularCourse.objects.all()
-
-    context = {
-        'courses': courses,
-    }
-    return render(request, 'courses/development.html', context)
+# def course_sign_up(request):
+#     if request.method == 'POST':
+#         form = CourseSignUp(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('index')
+#     else:
+#         form = CourseSignUp()
+#
+#     return render(request, 'app/login.html', {'form': form})
 
 
-def game_design(request):
-    courses = PopularCourse.objects.all()
+class CourseSignUpView(FormView):
+    template_name = 'app/index.html'
+    form_class = CourseSignUpForm
+    success_url = reverse_lazy('index')
 
-    context = {
-        'courses': courses,
-    }
-    return render(request, 'courses/game-design.html', context)
-
-
-def apps_design(request):
-    courses = PopularCourse.objects.all()
-
-    context = {
-        'courses': courses,
-    }
-    return render(request, 'courses/app-design.html', context)
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
 
 
-def marketing(request):
-    courses = PopularCourse.objects.all()
-
-    context = {
-        'courses': courses,
-    }
-    return render(request, 'courses/marketing.html', context)
-
-
-def research(request):
-    courses = PopularCourse.objects.all()
-
-    context = {
-        'courses': courses,
-    }
-    return render(request, 'courses/research.html', context)
+class WebDesignView(View):
+    def get(self, request, *args, **kwargs):
+        courses = PopularCourse.objects.all()
+        context = {
+            'courses': courses,
+        }
+        return render(request, 'courses/web-design.html', context)
 
 
-def content(request):
-    courses = PopularCourse.objects.all()
+class DevelopmentView(View):
+    def get(self, request, *args, **kwargs):
+        courses = PopularCourse.objects.all()
 
-    context = {
-        'courses': courses,
-    }
-    return render(request, 'courses/content.html', context)
+        context = {
+            'courses': courses,
+        }
+        return render(request, 'courses/development.html', context)
 
 
-def seo(request):
-    courses = PopularCourse.objects.all()
+class GameDesignView(View):
+    def get(self, request, *args, **kwargs):
+        courses = PopularCourse.objects.all()
 
-    context = {
-        'courses': courses,
-    }
-    return render(request, 'courses/seo.html', context)
+        context = {
+            'courses': courses,
+        }
+        return render(request, 'courses/game-design.html', context)
+
+
+class AppsDesignView(View):
+    def get(self, request, *args, **kwargs):
+        courses = PopularCourse.objects.all()
+
+        context = {
+            'courses': courses,
+        }
+        return render(request, 'courses/app-design.html', context)
+
+
+class MarketingView(View):
+    def get(self, request, *args, **kwargs):
+        courses = PopularCourse.objects.all()
+
+        context = {
+            'courses': courses,
+        }
+        return render(request, 'courses/marketing.html', context)
+
+
+class ResearchView(View):
+    def get(self, request, *args, **kwargs):
+        courses = PopularCourse.objects.all()
+
+        context = {
+            'courses': courses,
+        }
+        return render(request, 'courses/research.html', context)
+
+
+class ContentView(View):
+    def get(self, request, *args, **kwargs):
+        courses = PopularCourse.objects.all()
+
+        context = {
+            'courses': courses,
+        }
+        return render(request, 'courses/content.html', context)
+
+
+class SeoView(View):
+    def get(self, request, *args, **kwargs):
+        courses = PopularCourse.objects.all()
+
+        context = {
+            'courses': courses,
+        }
+        return render(request, 'courses/seo.html', context)

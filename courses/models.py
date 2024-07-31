@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+
 # Create your models here.
 
 """COURSE MODEL"""
@@ -54,10 +55,17 @@ class PopularCourse(models.Model):
         return self.title
 
 
+class Video(models.Model):
+    title = models.CharField(max_length=255)
+    video = models.FileField(upload_to='videos/')
+    course = models.ForeignKey(PopularCourse, related_name='videos', on_delete=models.CASCADE)
+
+
 class CourseSignUp(models.Model):
     full_name = models.CharField(max_length=100)
     email = models.EmailField()
-    select_a_course = models.ForeignKey('PopularCourse', related_name='select_a_course', on_delete=models.CASCADE, null=True,
+    select_a_course = models.ForeignKey('PopularCourse', related_name='select_a_course', on_delete=models.CASCADE,
+                                        null=True,
                                         blank=True)
 
     def __str__(self):

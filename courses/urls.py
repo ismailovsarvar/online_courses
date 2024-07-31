@@ -1,26 +1,26 @@
 from django.urls import path
 
 from courses.views import (
-    course,
-    web_design,
-    development,
-    game_design,
-    apps_design,
-    marketing,
-    research,
-    content,
-    seo,
+    CourseView,
+    WebDesignView,
+    DevelopmentView,
+    GameDesignView,
+    AppsDesignView,
+    MarketingView,
+    ResearchView,
+    ContentView,
+    SeoView,
 )
 
 urlpatterns = [
-    path('course/', course, name='courses'),
+    path('course/', CourseView.as_view(), name='courses'),
     # Courses link:
-    path('web-design/', web_design, name='web_design'),
-    path('development/', development, name='development'),
-    path('game-design/', game_design, name='game_design'),
-    path('app-design/', apps_design, name='apps_design'),
-    path('marketing/', marketing, name='marketing'),
-    path('research/', research, name='research'),
-    path('content/', content, name='content'),
-    path('seo/', seo, name='seo'),
+    path('web-design/', WebDesignView.as_view(), name='web_design'),
+    path('development/', DevelopmentView.as_view(), name='development'),
+    path('game-design/', GameDesignView.as_view(), name='game_design'),
+    path('app-design/', AppsDesignView.as_view(), name='apps_design'),
+    path('marketing/', MarketingView.as_view(), name='marketing'),
+    path('research/', ResearchView.as_view(), name='research'),
+    path('content/', ContentView.as_view(), name='content'),
+    path('seo/', SeoView.as_view(), name='seo'),
 ]
