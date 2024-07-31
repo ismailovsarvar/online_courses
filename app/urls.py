@@ -1,11 +1,13 @@
 from django.urls import path
 
 from app.views import (
-    index,
-    about,
+    IndexView,
+    AboutView,
+    LoginView
 )
 
 urlpatterns = [
-    path('index/', index, name='index'),
-    path('about/', about, name='about')
+    path('index/', IndexView.as_view(), name='index'),
+    path('about/', AboutView.as_view(), name='about'),
+    path('authentication/', LoginView.as_view(), name='login'),
 ]

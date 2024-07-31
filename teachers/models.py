@@ -9,15 +9,20 @@ from courses.models import Category
 
 
 class Teacher(models.Model):
+    class LevelChoices(models.TextChoices):
+        JUNIOR = 'Junior',
+        MIDDLE = 'Middle',
+        SENIOR = 'Senior'
+
     full_name = models.CharField(max_length=100)
-    slug = models.SlugField(unique=True, blank=True)
+    description = models.TextField()
     email = models.EmailField()
-    phone = models.CharField()
     twitter = models.URLField(blank=True)
     facebook = models.URLField(blank=True)
     linkedin = models.URLField(blank=True)
-    description = models.TextField()
+    level = models.CharField(choices=LevelChoices.choices, default=LevelChoices.MIDDLE.value)
     image = models.ImageField(upload_to='teachers/')
+    slug = models.SlugField(unique=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     def save(self, *args, **kwargs):

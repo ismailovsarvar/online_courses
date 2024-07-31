@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views import View
 
 from courses.models import Category, PopularCourse
 from teachers.models import Teacher
@@ -8,30 +9,37 @@ from teachers.models import Teacher
 """INDEX VIEWS"""
 
 
-def index(request):
-    categories = Category.objects.all()
-    popular_courses = PopularCourse.objects.all()
-    teachers = Teacher.objects.all()
+class IndexView(View):
+    template_name = 'app/index.html'
 
-    context = {
-        'categories': categories,
-        'popular_courses': popular_courses,
-        'teachers': teachers,
-    }
-    return render(request, 'app/index.html', context)
+    def get(self, request, *args, **kwargs):
+        categories = Category.objects.all()
+        popular_courses = PopularCourse.objects.all()
+        teachers = Teacher.objects.all()
+
+        context = {
+            'categories': categories,
+            'popular_courses': popular_courses,
+            'teachers': teachers,
+        }
+        return render(request, self.template_name, context)
 
 
 """ABOUT VIEWS"""
 
 
-def about(request):
-    return render(request, 'app/about.html')
+class AboutView(View):
+    template_name = 'app/about.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name)
 
 
+"""LOGIN VIEWS"""
 
 
+class LoginView(View):
+    template_name = 'auth/auth.html'
 
-
-
-
-
+    def get(self, request):
+        return render(request, self.template_name)

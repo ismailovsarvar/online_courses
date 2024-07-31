@@ -7,4 +7,4 @@ from teachers.models import Teacher
 
 @admin.register(Teacher)
 class TeacherAdmin(admin.ModelAdmin):
-    list_display = ('full_name', 'email', 'phone')
+    list_display = ('full_name', 'email', 'category', 'image')

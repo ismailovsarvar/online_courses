@@ -118,7 +118,7 @@
                         </div>
                         <a href="{% url 'contact' %}" class="nav-item nav-link active">Contact</a>
                     </div>
-                    <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="">Join Now</a>
+                    <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="{% url 'login' %}">Login</a>
                 </div>
             </nav>
         </div>
@@ -152,7 +152,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="contact-form bg-secondary rounded p-5">
-                    <form method="post" action="/submit/" novalidate>
+                    <form method="post" novalidate>
                         {% csrf_token %}
                         <!-- Name Field -->
                         <div class="control-group">
@@ -216,7 +216,7 @@
             </div>
         </div>
     </div>
-</div>  
+</div>
 <!-- Contact End -->
 
 
