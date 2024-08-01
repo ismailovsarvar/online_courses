@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic.edit import FormView
@@ -26,16 +26,19 @@ class CourseView(View):
         return render(request, 'courses/course.html', context)
 
 
-# def course_sign_up(request):
-#     if request.method == 'POST':
-#         form = CourseSignUp(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('index')
-#     else:
-#         form = CourseSignUp()
-#
-#     return render(request, 'app/login.html', {'form': form})
+class CourseDetailView(View):
+    template_name = 'courses/web-design.html'
+
+    def get(self, request, slug, *args, **kwargs):
+        course = get_object_or_404(PopularCourse, slug=slug)
+        videos = course.videos.all()
+
+        context = {
+            'course': course,
+            'videos': videos
+        }
+
+        return render(request, self.template_name, context)
 
 
 class CourseSignUpView(FormView):

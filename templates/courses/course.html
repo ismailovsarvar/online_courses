@@ -123,6 +123,15 @@
                         <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="">
                             {{ user.username }}
                         </a>
+
+                        <!-- Logout button -->
+                        <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger py-2 px-4 ml-2 d-none d-lg-block">
+                                Logout
+                            </button>
+                        </form>
+
                     {% else %}
                         <!-- Agar foydalanuvchi tizimga kirmagan bo'lsa, tizimga kirish ko'rsatiladi -->
                         <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="{% url 'login' %}">
@@ -206,7 +215,7 @@
                                             class="far fa-clock text-primary mr-2"></i>{{ popular.time_of_teaching }}
                                     </small>
                                 </div>
-                                <a class="h5" href="{% url 'web_design' %}">{{ popular.title }}</a>
+                                <a class="h5" href="{% url 'course_detail' slug=popular.slug %}">{{ popular.title }}</a>
                                 <div class="border-top mt-4 pt-4">
                                     <div class="d-flex justify-content-between">
                                         <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>{{ popular.rating }}<small>(250)</small>

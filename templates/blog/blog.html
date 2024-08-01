@@ -123,6 +123,15 @@
                         <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="">
                             {{ user.username }}
                         </a>
+                        
+                        <!-- Logout button -->
+                        <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger py-2 px-4 ml-2 d-none d-lg-block">
+                                Logout
+                            </button>
+                        </form>
+                        
                     {% else %}
                         <!-- Agar foydalanuvchi tizimga kirmagan bo'lsa, tizimga kirish ko'rsatiladi -->
                         <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="{% url 'login' %}">

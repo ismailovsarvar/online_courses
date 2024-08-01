@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ course.title }}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>{{ course.title }}</h1>
+    <img src="{{ course.image.url }}" alt="{{ course.title }}">
+    <p>{{ course.time_of_teaching }}</p>
+    <p>Rating: {{ course.rating }}</p>
+    <p>Price: ${{ course.price }}</p>
+    
+    <h2>Videos</h2>
+    {% if videos %}
+        <ul>
+            {% for video in videos %}
+                <li>
+                    <h3>{{ video.title }}</h3>
+                    <video controls style="width: 100%; max-width: 640px; height: auto;">
+                        <source src="{{ video.video.url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No videos available.</p>
+    {% endif %}
+</body>
+</html>

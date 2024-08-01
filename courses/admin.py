@@ -7,7 +7,7 @@ from courses.models import Category, PopularCourse, CourseSignUp, Video
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('title', 'slug')
+    list_display = ('title', 'image')
     search_fields = ('title',)
 
 
