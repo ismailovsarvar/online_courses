@@ -7,4 +7,5 @@ Online Course Backend saytda qilingan ishlar ro'yxati:
 5. Course detailga slug orqali bog'landi kurs haqida ma'lumot va video darslik ko'rinadi
 6. Contact orqali saytga kirgan foydalanuvchi inputdagi ma'lumotlarni kiritib jo'natsa bazaga keladigan qilindi
 7. Login, Register va Logout qilindi
-8. 
+8. Blog list ko'rinadi
+9. Blog detailda comment uchun view qilindi
