@@ -14,7 +14,10 @@ class BlogListView(View):
     def get(self, request, *args, **kwargs):
         blog = BlogList.objects.all()
         comments = blog.comments.filter(is_possible=True)
-        context = {'blog': blog}
+        context = {
+            'blog': blog,
+            'comments': comments
+        }
         return render(request, 'blog/blog.html', context)
 
 
